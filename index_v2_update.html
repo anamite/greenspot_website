@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSpot - One Spot for All Your Parking Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://tally.so/widgets/embed.js" defer></script>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
+        }
+
+        body {
+            background-color: #121419;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Centered Container */
+        .container {
+            width: 90%; /* Use 90% of the available width */
+            max-width: 1200px; /* Maximum width the content will reach */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px; /* Optional small padding inside container */
+            padding-right: 15px; /* Optional small padding inside container */
+        }
+
+        /* Section Styles */
+        .section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .section-alt {
+            background-color: #1A1D23;
+        }
+
+        /* Navigation */
+        .navbar {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(18, 20, 25, 0.95); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle bottom border */
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Space out logo/links and button */
+            align-items: center;
+        }
+
+        /* Logo (Optional - if you add one) */
+        .nav-logo a {
+             font-size: 1.5rem;
+             font-weight: 700;
+             color: #ffffff;
+             text-decoration: none;
+        }
+        .nav-logo .green {
+             color: #00E69C;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            /* margin-right: auto; No longer needed with space-between */
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0; /* Add some vertical padding for easier clicking */
+        }
+
+        .nav-links a:hover {
+            color: #00E69C;
+        }
+
+        .contact-btn {
+            background: transparent;
+            border: 1px solid #00E69C;
+            color: #00E69C;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none; /* Ensure link looks like a button */
+            font-weight: 600; /* Match submit button weight */
+            white-space: nowrap;
+        }
+
+        .contact-btn:hover {
+            background: #00E69C;
+            color: #121419;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 10rem; /* Increased top padding to account for fixed navbar */
+            padding-bottom: 6rem; /* Increased bottom padding */
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero .container {
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+             gap: 4rem; /* Increased gap */
+        }
+
+        .hero-content {
+             width: 50%; /* Adjust width */
+             flex-shrink: 0;
+        }
+
+        .hero-image {
+             width: 45%; /* Adjust width */
+             text-align: right;
+             flex-shrink: 0;
+        }
+
+         .hero-image img {
+             max-width: 100%;
+             height: auto;
+             border-radius: 10px; /* Slightly rounded corners for the image */
+         }
+
+
+        .welcome-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #aaaaaa; /* Subdued welcome text */
+        }
+
+        .brand-name {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1; /* Adjusted line height */
+        }
+
+        .green {
+            color: #00E69C;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #e0e0e0; /* Slightly brighter tagline */
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #aaaaaa;
+            margin-bottom: 2.5rem; /* Increased margin */
+            line-height: 1.6;
+        }
+
+        .email-form {
+            display: flex;
+            margin-top: 2rem;
+            border-radius: 5px; /* Apply border-radius to the container */
+            overflow: hidden; /* Ensure children conform to border-radius */
+            box-shadow: 0 4px 15px rgba(0, 230, 156, 0.1); /* Subtle glow */
+        }
+
+        .email-input {
+            padding: 0.9rem 1.2rem; /* Slightly larger padding */
+            border: none;
+            background-color: #1E2128;
+            color: #ffffff;
+            flex-grow: 1;
+            min-width: 150px;
+            font-size: 1rem; /* Ensure consistent font size */
+        }
+        .email-input:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px #00E69C; /* Focus indicator */
+        }
+
+
+        /* Style the anchor tag like the original button */
+        .submit-btn-link {
+            display: inline-block; /* Allow padding and block-like behavior */
+            background: #00E69C;
+            color: #121419;
+            border: none;
+            padding: 0.9rem 1.5rem; /* Match input padding */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            white-space: nowrap;
+            text-decoration: none; /* Remove underline from link */
+            font-size: 1rem; /* Match input font size */
+        }
+
+        .submit-btn-link:hover {
+            background: #00C386;
+        }
+
+        /* Stats Section */
+        .stats {
+            text-align: left;
+        }
+
+        .stats-title {
+            font-size: 2.5rem;
+            margin-bottom: 4rem; /* Increased bottom margin */
+            text-align: center; /* Center the title */
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem; /* Consistent gap */
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 220px; /* Slightly wider */
+            background-color: #121419; /* Match body background */
+            padding: 1.5rem; /* Add padding */
+            border-radius: 8px; /* Rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        .stat-icon {
+             margin-bottom: 1rem;
+             color: #00E69C;
+             font-size: 2.5rem; /* Larger icons */
+        }
+        .stat-icon svg path, .stat-icon svg circle {
+            stroke: #00E69C;
+            stroke-width: 1.5; /* Slightly thinner stroke */
+        }
+
+
+        .stat-number {
+            font-size: 2.8rem; /* Larger numbers */
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: baseline;
+            white-space: nowrap;
+        }
+
+        .stat-unit {
+            color: #00E69C;
+            font-size: 2.2rem; /* Larger unit */
+            font-weight: 700;
+            margin-left: 0.4rem;
+        }
+
+        .stat-description {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            line-height: 1.4; /* Improved line height */
+        }
+
+        /* App Section */
+        .app-section .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem; /* Increased gap */
+            flex-wrap: wrap;
+        }
+
+        .app-image {
+             width: 45%; /* Adjust width */
+             min-width: 280px; /* Prevent getting too small */
+             text-align: center;
+        }
+        .app-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+
+        .app-content {
+             width: 50%; /* Adjust width */
+             min-width: 280px;
+        }
+
+        .app-heading {
+            font-size: 2rem; /* Larger heading */
+            margin-bottom: 1.5rem; /* Increased margin */
+        }
+
+        .app-description {
+            font-size: 1.1rem; /* Slightly larger text */
+            color: #aaaaaa;
+            margin-bottom: 2rem; /* Increased margin */
+            line-height: 1.6;
+        }
+
+        .app-stores {
+            display: flex;
+            gap: 1.5rem; /* Increased gap */
+            margin-bottom: 2rem;
+        }
+
+        .store-icon {
+            height: 50px; /* Larger icons */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .store-icon:hover {
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+        /* Features Section */
+        .features {
+             padding-top: 6rem;
+             padding-bottom: 6rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center; /* Vertically center content */
+            margin-bottom: 5rem; /* Increased spacing */
+            gap: 4rem; /* Increased gap */
+            flex-wrap: wrap;
+        }
+         .feature-item:last-child {
+             margin-bottom: 0;
+         }
+         /* Reverse layout for the second item */
+         .feature-item:nth-child(even) {
+             flex-direction: row-reverse;
+         }
+
+
+        .feature-icon {
+            width: 45%; /* Adjust width */
+            min-width: 280px;
+            text-align: center;
+        }
+         .feature-icon img {
+             max-width: 100%;
+             height: auto;
+             border-radius: 10px;
+         }
+
+        .feature-content {
+            width: 50%; /* Adjust width */
+             min-width: 280px;
+        }
+
+        .feature-title {
+            font-size: 1.8rem; /* Larger title */
+            margin-bottom: 1.5rem; /* Increased margin */
+            color: #00E69C; /* Highlight feature titles */
+        }
+
+        .feature-points {
+            margin-bottom: 1.5rem;
+            color: #aaaaaa;
+            line-height: 1.7; /* Improved line height */
+            font-size: 1.05rem; /* Slightly larger point text */
+        }
+
+        .feature-points p {
+            margin-bottom: 1rem; /* Space out points */
+            color: #ffffff; /* Main point text */
+            position: relative; /* For potential future icons/bullets */
+            padding-left: 1.5rem; /* Indent points */
+        }
+        .feature-points p::before {
+            content: '✓'; /* Use checkmark as bullet */
+            color: #00E69C;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+         .feature-points p:last-child {
+             margin-bottom: 0;
+         }
+
+        .feature-footer {
+            color: #aaaaaa;
+            font-style: italic;
+            margin-top: 2rem; /* Increased space */
+            font-size: 0.95rem;
+        }
+
+        /* Achievements Section */
+        .achievements .container {
+            text-align: center;
+        }
+
+        .section-title { /* General section title style */
+            font-size: 2.5rem; /* Consistent section title size */
+            margin-bottom: 4rem; /* Consistent margin */
+            text-align: center;
+            font-weight: 700;
+        }
+        .section-title.alt-bg { /* For titles on dark alt background */
+            color: #ffffff;
+        }
+
+        .achievement-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .achievement-item {
+            background-color: #1E2128;
+            border-radius: 10px;
+            padding: 2.5rem 2rem; /* Increased padding */
+            width: 240px; /* Wider */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-basis: 240px;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 230, 156, 0.15); /* Glow effect on hover */
+        }
+
+        .achievement-icon {
+             margin-bottom: 1.5rem; /* Increased margin */
+             max-width: 70px; /* Larger icon */
+             height: auto;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem; /* Larger title */
+            margin-bottom: 0.75rem; /* Adjusted margin */
+            color: #00E69C; /* Highlight title */
+        }
+
+        .achievement-date {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Team Section */
+        .team .container {
+            text-align: center;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem; /* Increased gap */
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .team-member {
+             width: 200px;
+             text-align: center;
+             flex-basis: 200px;
+             padding: 1rem; /* Add padding for spacing */
+             transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+            transform: scale(1.03); /* Slight scale on hover */
+        }
+
+        .member-image {
+            width: 140px; /* Slightly smaller image */
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem; /* Increased margin */
+            object-fit: cover;
+            border: 3px solid #00E69C; /* Highlight border */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .member-role {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem; /* Increased gap */
+            flex-wrap: wrap; /* Allow wrapping */
+            position: relative; /* Needed for absolute positioning if required */
+        }
+
+        /* *** CHANGE 3: Moved Heading *** */
+        .contact-heading {
+            width: 100%; /* Make heading span full width */
+            text-align: center; /* Center the heading */
+            font-size: 2rem;
+            margin-bottom: 3rem; /* Add space below heading */
+            order: -1; /* Ensure heading appears first in flex layout */
+        }
+
+        .contact-image {
+             width: 45%;
+             min-width: 280px;
+             text-align: center;
+             align-self: center;
+        }
+         .contact-image img {
+             max-width: 100%;
+             height: auto;
+             border-radius: 10px;
+         }
+
+        .contact-form-wrapper { /* Renamed from contact-form for clarity */
+             width: 50%;
+             min-width: 280px;
+             min-height: 300px; /* Ensure space for the form */
+             display: flex;
+             align-items: center;
+             background-color: #1A1D23; /* Add subtle background */
+             border-radius: 8px;
+             padding: 1rem; /* Add padding around iframe */
+             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-form-wrapper iframe {
+            border-radius: 5px; /* Round corners of the iframe container */
+        }
+
+
+        /* Supporting Organizations */
+        .supporting-orgs .container {
+            text-align: center;
+        }
+
+        .orgs-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5rem; /* Increased gap */
+            flex-wrap: wrap;
+            margin-top: 1rem; /* Add space above logos */
+        }
+
+        .org-logo {
+             height: 45px; /* Slightly larger logos */
+             max-width: 160px;
+             filter: brightness(0) invert(1); /* Keep white */
+             opacity: 0.7; /* Slightly less opaque */
+             transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .org-logo:hover {
+            opacity: 1;
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1A1D23; /* Match alt section background */
+            padding-top: 3rem; /* Increased padding */
+            padding-bottom: 3rem; /* Increased padding */
+            text-align: center;
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separator line */
+        }
+        .footer .container {
+            text-align: center;
+        }
+
+
+        /* Animations (No changes needed) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none; /* Hidden by default */
+            font-size: 1.8rem; /* Larger toggle icon */
+            cursor: pointer;
+            color: #ffffff;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001; /* Ensure it's above nav links */
+        }
+
+
+        /* --- Responsive Design --- */
+
+        @media (max-width: 1024px) {
+            .container {
+                width: 95%;
+            }
+            .hero .container {
+                 flex-direction: column;
+                 text-align: center;
+                 gap: 3rem; /* Adjust gap for column layout */
+             }
+             .hero-content, .hero-image {
+                 width: 100%;
+                 max-width: 550px; /* Optional max-width */
+                 text-align: center;
+             }
+             .hero-image {
+                 margin-top: 3rem;
+                 text-align: center;
+             }
+             .email-form {
+                 justify-content: center;
+                 max-width: 450px; /* Limit width of email form */
+                 margin-left: auto;
+                 margin-right: auto;
+             }
+
+            .app-section .container,
+            .contact .container {
+                 flex-direction: column;
+                 text-align: center;
+                 gap: 3rem; /* Adjust gap */
+            }
+            .app-image, .app-content, .contact-image, .contact-form-wrapper {
+                 width: 100%;
+                 max-width: 500px;
+            }
+             .app-image, .contact-image {
+                 margin-bottom: 0; /* Remove bottom margin, rely on gap */
+             }
+             .app-stores {
+                 justify-content: center;
+             }
+
+             /* Reverse feature items back to standard order on tablet */
+             .feature-item:nth-child(even) {
+                 flex-direction: column; /* Stack in column */
+             }
+             .feature-item {
+                 flex-direction: column;
+                 align-items: center;
+                 text-align: center;
+                 gap: 2rem;
+             }
+             .feature-icon, .feature-content {
+                 width: 100%;
+                 max-width: 500px;
+             }
+             .feature-icon {
+                 margin-bottom: 0;
+             }
+             .feature-points p {
+                 padding-left: 1.5rem; /* Ensure padding remains */
+                 text-align: left; /* Align points left for readability */
+             }
+             .feature-points p::before {
+                 left: 0; /* Ensure checkmark is positioned correctly */
+             }
+        }
+
+        @media (max-width: 768px) {
+            .brand-name { font-size: 3.5rem; }
+            .tagline { font-size: 1.3rem; }
+            .section-title { font-size: 2.2rem; margin-bottom: 3rem; }
+            .stats-title { font-size: 2rem; margin-bottom: 3rem; }
+            .app-heading { font-size: 1.8rem; }
+            .feature-title { font-size: 1.6rem; }
+            .contact-heading { font-size: 1.8rem; margin-bottom: 2.5rem; }
+
+
+            .stats-grid, .achievement-grid, .team-grid {
+                justify-content: center;
+                gap: 1.5rem; /* Reduce gap */
+            }
+             .stat-item, .achievement-item, .team-member {
+                 flex-basis: calc(50% - 1rem); /* Two items per row with gap */
+                 max-width: none; /* Remove max-width */
+             }
+             .stat-item { padding: 1rem; }
+             .achievement-item { padding: 1.5rem 1rem; }
+             .team-member { padding: 0.5rem; }
+             .member-image { width: 100px; height: 100px; }
+
+
+             .orgs-grid { gap: 3rem; } /* Reduce gap */
+             .org-logo { height: 35px; }
+
+             /* Mobile Menu Activation */
+            .menu-toggle {
+                display: block;
+                order: 3; /* Place after contact button */
+                margin-left: 1rem;
+            }
+            .navbar .container {
+                 /* Adjust justify-content if logo exists */
+                 /* justify-content: space-between; */
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%; /* Position below navbar */
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: rgba(18, 20, 25, 0.98);
+                padding: 1.5rem 0; /* Increased padding */
+                align-items: center;
+                gap: 1.5rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links.active {
+                display: flex; /* Show when active */
+            }
+             .nav-links a {
+                 font-size: 1.1rem;
+                 padding: 0.8rem 0; /* More vertical space */
+             }
+             .contact-btn {
+                 order: 2; /* Keep before toggle */
+                 padding: 0.4rem 1rem; /* Slightly smaller */
+                 font-size: 0.9rem;
+             }
+        }
+
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%; /* Keep slightly inset */
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .brand-name { font-size: 2.8rem; }
+            .tagline { font-size: 1.1rem; }
+            .hero { padding-top: 8rem; } /* Adjust padding */
+
+            .email-form {
+                 flex-direction: column;
+                 align-items: stretch;
+                 gap: 0.8rem; /* Reduce gap */
+                 max-width: 100%; /* Full width */
+            }
+            .email-input, .submit-btn-link {
+                 width: 100%;
+                 border-radius: 5px; /* Reset border radius */
+                 text-align: center; /* Center text in button */
+            }
+
+            .stat-number { font-size: 2.2rem; }
+            .stat-unit { font-size: 1.8rem; }
+             .stat-item, .achievement-item, .team-member {
+                 flex-basis: 100%; /* One item per row */
+             }
+             .stat-item { max-width: 300px; margin: 0 auto;} /* Center single items */
+             .achievement-item { max-width: 300px; margin: 0 auto;}
+             .team-member { max-width: 200px; margin: 0 auto;}
+
+
+             /* --- Element Visibility on Phone --- */
+             .contact-btn {
+                 display: none; /* Hide Contact Us button */
+             }
+
+             /* *** CHANGE 2: Show faded hero image *** */
+             .hero-image {
+                 display: block; /* Ensure it's displayed */
+                 width: 50%; /* Moderate width */
+                 opacity: 0.25; /* Reduced opacity */
+                 margin: 2rem auto 0; /* Center and add top margin */
+                 max-width: 250px; /* Limit max size */
+             }
+             .hero-content {
+                  width: 100%; /* Text takes full width */
+                  max-width: none;
+             }
+
+             /* Adjust navbar when contact button is hidden */
+             .navbar .container {
+                  justify-content: space-between; /* Space out logo/links and toggle */
+             }
+             .nav-links {
+                  /* If logo exists, push links right */
+                  /* margin-left: auto; */
+             }
+             .menu-toggle {
+                  margin-left: 0;
+             }
+
+             .contact-form-wrapper {
+                 padding: 0.5rem; /* Reduce padding */
+             }
+             .footer {
+                 padding-top: 2rem;
+                 padding-bottom: 2rem;
+                 font-size: 0.85rem;
+             }
+             .orgs-grid { gap: 2rem; }
+             .org-logo { height: 30px; }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links" id="main-nav-links">
+                <a href="#home">Home</a>
+                <a href="#product">Product</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a> </div>
+            <a href="#contact" class="contact-btn">Contact Us</a>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav-links">☰</button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero section">
+        <div class="container">
+            <div class="hero-content animated">
+                <p class="welcome-text">Welcome to</p>
+                <h1 class="brand-name">Green<span class="green">Spot</span></h1>
+                <p class="tagline">One Spot for All Your Parking Solutions</p>
+                <p class="description">Your go-to mobile app designed to revolutionize parking. Whether you're finding a spot or sharing one, we've got you covered while helping reduce your carbon footprint.</p>
+                <div class="email-form">
+                    <input type="email" class="email-input" placeholder="Enter your email for updates">
+                    <a href="#contact" class="submit-btn-link">Stay Updated</a>
+                </div>
+            </div>
+            <div class="hero-image animated delay-1">
+                <img src="car_map.svg" alt="Parking Map Visualization" onerror="this.onerror=null; this.src='https://placehold.co/500x400/1A1D23/444?text=Image+Not+Found';">
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="stats section section-alt">
+       <div class="container">
+            <h2 class="stats-title animated">Here's what we're trying to save...</h2>
+            <div class="stats-grid">
+                <div class="stat-item animated delay-1">
+                    <div class="stat-icon">
+                       <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <circle cx="12" cy="12" r="10" stroke="currentColor"/>
+                           <path d="M12 6V12L16 14" stroke="currentColor" stroke-linecap="round"/>
+                       </svg>
+                    </div>
+                    <div class="stat-number">41<span class="stat-unit">hrs</span></div>
+                    <p class="stat-description">Average Time Driver Wastes Annually Searching for Parking</p>
+                </div>
+                <div class="stat-item animated delay-2">
+                     <div class="stat-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.5 10.5C15.5 11.3284 14.8284 12 14 12C13.1716 12 12.5 11.3284 12.5 10.5C12.5 9.67157 13.1716 9 14 9C14.8284 9 15.5 9.67157 15.5 10.5Z" fill="currentColor"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.3431 4 9 5.34315 9 7V13L5.70711 16.2929C5.31658 16.6834 5.31658 17.3166 5.70711 17.7071C6.09763 18.0976 6.7308 18.0976 7.12132 17.7071L10 15V20H14V15L16.8787 17.7071C17.2692 18.0976 17.9024 18.0976 18.2929 17.7071C18.6834 17.3166 18.6834 16.6834 18.2929 16.2929L15 13V7C15 5.34315 13.6569 4 12 4ZM13 7V13.5858L14.7071 15.2929C14.8946 15.4804 15 15.7348 15 16V7H13Z" fill="currentColor"/>
+                        </svg>
+                     </div>
+                    <div class="stat-number">3.2<span class="stat-unit">B</span></div>
+                    <p class="stat-description">Liters of Fuel Wasted Annually in the EU due to Parking Search</p>
+                </div>
+                 <div class="stat-item animated delay-3">
+                     <div class="stat-icon">
+                       <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M12 1V23" stroke="currentColor" stroke-linecap="round"/>
+                           <path d="M17 5H9.5C7.567 5 6 6.567 6 8.5C6 10.433 7.567 12 9.5 12H14.5C16.433 12 18 13.567 18 15.5C18 17.433 16.433 19 14.5 19H6" stroke="currentColor" stroke-linecap="round"/>
+                       </svg>
+                     </div>
+                    <div class="stat-number">€40<span class="stat-unit">B</span></div>
+                    <p class="stat-description">Estimated Annual Economic Impact in the EU from Wasted Time & Fuel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section section">
+        <div class="container">
+            <div class="app-image animated">
+                 <img src="mockup.png" alt="GreenSpot App Mockup" onerror="this.onerror=null; this.src='https://placehold.co/400x600/121419/444?text=Image+Not+Found';">
+            </div>
+            <div class="app-content animated delay-1">
+                <h2 class="app-heading">Launching Soon: Your Smart Parking Companion</h2>
+                <p class="app-description">Get ready to experience seamless parking. Our app connects drivers with available spots instantly. Download coming soon!</p>
+                <div class="app-stores">
+                     <img src="https://via.placeholder.com/150x50/1A1D23/FFFFFF?text=App+Store" alt="Download on the App Store" class="store-icon" onerror="this.onerror=null; this.src='https://placehold.co/150x50/1A1D23/444?text=App+Store';">
+                     <img src="https://via.placeholder.com/150x50/1A1D23/FFFFFF?text=Google+Play" alt="Get it on Google Play" class="store-icon" onerror="this.onerror=null; this.src='https://placehold.co/150x50/1A1D23/444?text=Google+Play';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features section section-alt">
+        <div class="container">
+             <div class="feature-item">
+                <div class="feature-icon animated">
+                     <img src="https://via.placeholder.com/500x350/1A1D23/00E69C?text=Real-Time+Search+Viz" alt="Illustration showing real-time parking search" onerror="this.onerror=null; this.src='https://placehold.co/500x350/1A1D23/444?text=Image+Not+Found';">
+                </div>
+                <div class="feature-content animated delay-1">
+                    <h3 class="feature-title">Find Parking in Real Time</h3>
+                    <div class="feature-points">
+                        <p>Live Availability: Instantly see open spots near your destination.</p>
+                        <p>Transparent Pricing: Compare costs and amenities before you park.</p>
+                        <p>Seamless Booking: Reserve and pay securely within the app.</p>
+                    </div>
+                    <p class="feature-footer">No more circling the block. Find, compare, and secure your spot effortlessly!</p>
+                </div>
+            </div>
+             <div class="feature-item">
+                 <div class="feature-content animated delay-1">
+                    <h3 class="feature-title">Turn Your Empty Spot into Earnings</h3>
+                    <div class="feature-points">
+                        <p>Effortless Income: Rent out your unused parking space when you're away.</p>
+                        <p>Flexible Scheduling: You control when your spot is available.</p>
+                        <p>Community Benefit: Help reduce traffic and make parking easier for others.</p>
+                    </div>
+                    <p class="feature-footer">Monetize your driveway or garage space while contributing to a smarter city!</p>
+                </div>
+                 <div class="feature-icon animated">
+                     <img src="https://via.placeholder.com/500x350/1A1D23/00E69C?text=Earning+Viz" alt="Illustration showing earning potential from parking spot" onerror="this.onerror=null; this.src='https://placehold.co/500x350/1A1D23/444?text=Image+Not+Found';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="achievements section">
+        <div class="container">
+            <h2 class="section-title animated">Our Milestones</h2>
+            <div class="achievement-grid">
+                <div class="achievement-item animated delay-1">
+                     <img src="icon1.png" alt="Award Icon" class="achievement-icon" onerror="this.onerror=null; this.src='https://placehold.co/70x70/1E2128/444?text=Icon';">
+                    <h3 class="achievement-title">Startup Pitch Win</h3>
+                    <p class="achievement-date">2nd Place - June 2024</p>
+                </div>
+                 <div class="achievement-item animated delay-1">
+                     <img src="icon2.png" alt="Funding Icon" class="achievement-icon" onerror="this.onerror=null; this.src='https://placehold.co/70x70/1E2128/444?text=Icon';">
+                    <h3 class="achievement-title">Pre-Seed Funding</h3>
+                    <p class="achievement-date">Secured - Dec 2024</p>
+                </div>
+                 <div class="achievement-item animated delay-2">
+                     <img src="icon3.png" alt="Competition Icon" class="achievement-icon" onerror="this.onerror=null; this.src='https://placehold.co/70x70/1E2128/444?text=Icon';">
+                    <h3 class="achievement-title">Enactus Finalist</h3>
+                    <p class="achievement-date">National Gating - Jan 2025</p>
+                </div>
+                 <div class="achievement-item animated delay-2">
+                     <img src="icon4.png" alt="First Prize Icon" class="achievement-icon" onerror="this.onerror=null; this.src='https://placehold.co/70x70/1E2128/444?text=Icon';">
+                    <h3 class="achievement-title">Innovation Challenge</h3>
+                    <p class="achievement-date">1st Prize - Jan 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team section section-alt">
+        <div class="container">
+            <h2 class="section-title animated alt-bg">Meet the Team</h2>
+            <div class="team-grid">
+                 <div class="team-member animated delay-1">
+                     <img src="profile_1.png" alt="Ankit Thakkur" class="member-image" onerror="this.onerror=null; this.src='https://placehold.co/140x140/1A1D23/444?text=Profile';">
+                    <h3 class="member-name">Ankit Thakkur</h3>
+                    <p class="member-role">CEO & Founder</p>
+                </div>
+                <div class="team-member animated delay-1">
+                     <img src="profile_2.png" alt="Anand Krishnan" class="member-image" onerror="this.onerror=null; this.src='https://placehold.co/140x140/1A1D23/444?text=Profile';">
+                    <h3 class="member-name">Anand Krishnan</h3>
+                    <p class="member-role">Co-Founder & CTO</p>
+                </div>
+                 <div class="team-member animated delay-2">
+                     <img src="profile_3.png" alt="Juan Rosero" class="member-image" onerror="this.onerror=null; this.src='https://placehold.co/140x140/1A1D23/444?text=Profile';">
+                    <h3 class="member-name">Juan Rosero</h3>
+                    <p class="member-role">Co-Founder & CFO</p>
+                </div>
+                 <div class="team-member animated delay-2">
+                     <img src="profile_4.png" alt="Esha Anees" class="member-image" onerror="this.onerror=null; this.src='https://placehold.co/140x140/1A1D23/444?text=Profile';">
+                    <h3 class="member-name">Esha Anees</h3>
+                    <p class="member-role">Co-Founder & UX/UI Lead</p>
+                </div>
+                 <div class="team-member animated delay-3">
+                     <img src="profile_5.png" alt="Ameesha Bhorkade" class="member-image" onerror="this.onerror=null; this.src='https://placehold.co/140x140/1A1D23/444?text=Profile';">
+                    <h3 class="member-name">Ameesha Bhorkade</h3>
+                    <p class="member-role">Visual Designer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="contact-heading animated">Want to know more or work with us?</h2>
+
+            <div class="contact-image animated">
+                 <img src="work_us.png" alt="Illustration representing collaboration" onerror="this.onerror=null; this.src='https://placehold.co/500x400/121419/444?text=Image+Not+Found';">
+            </div>
+            <div class="contact-form-wrapper animated delay-1">
+                 <iframe
+                   data-tally-src="https://tally.so/embed/wal9gq?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                   loading="lazy"
+                   width="100%"
+                   height="300" /* Initial height, dynamicHeight will adjust */
+                   frameborder="0"
+                   marginheight="0"
+                   marginwidth="0"
+                   title="Contact form - GreenSpot">
+                 </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="supporting-orgs section section-alt">
+        <div class="container">
+            <h2 class="section-title animated alt-bg">Supported By</h2>
+            <div class="orgs-grid">
+                 <img src="enactus.png" alt="Enactus Logo" class="org-logo animated delay-1" onerror="this.onerror=null; this.src='https://placehold.co/160x45/1A1D23/444?text=Logo';">
+                 <img src="coe_icon.png" alt="Center of Entrepreneurship Logo" class="org-logo animated delay-2" onerror="this.onerror=null; this.src='https://placehold.co/160x45/1A1D23/444?text=Logo';">
+                 <img src="newexist.png" alt="Newexist Logo" class="org-logo animated delay-3" onerror="this.onerror=null; this.src='https://placehold.co/160x45/1A1D23/444?text=Logo';">
+            </div>
+        </div>
+    </section>
+
+     <footer class="footer">
+        <div class="container">
+             <p>&copy; 2025 GreenSpot. Driving Sustainable Urban Mobility. All rights reserved.</p>
+             </div>
+     </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            // --- Intersection Observer for Animations ---
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // Add 'appear' class when element is 10% visible
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('appear');
+                            observer.unobserve(entry.target); // Stop observing once animated
+                        }
+                    });
+                }, { threshold: 0.1 }); // Adjust threshold as needed (0.1 = 10% visible)
+
+                animatedElements.forEach(element => {
+                    observer.observe(element);
+                });
+            } else {
+                // Fallback for older browsers: just show elements immediately
+                animatedElements.forEach(element => {
+                    element.classList.add('appear');
+                });
+            }
+
+
+            // --- Smooth Scroll for Anchor Links ---
+            // Select all links with href starting with '#'
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    // Ensure it's a valid ID selector and not just "#"
+                    if (targetId && targetId.length > 1 && targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+
+                        if (targetElement) {
+                            e.preventDefault(); // Prevent default jump only if target exists
+
+                            const navbar = document.querySelector('.navbar');
+                            const navbarHeight = navbar ? navbar.offsetHeight : 0; // Get navbar height or 0 if not found
+                            // Calculate position: element's top relative to viewport + current scroll position - navbar height
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth' // Use browser's smooth scrolling
+                            });
+
+                            // Close mobile menu if open and a link inside it was clicked
+                            if (navLinks && navLinks.classList.contains('active') && this.closest('.nav-links')) {
+                                 navLinks.classList.remove('active');
+                                 menuToggle.setAttribute('aria-expanded', 'false'); // Update ARIA state
+                            }
+                        }
+                    }
+                });
+            });
+
+             // --- Mobile Menu Toggle ---
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    const isActive = navLinks.classList.toggle('active');
+                    this.setAttribute('aria-expanded', isActive); // Toggle ARIA state
+                });
+            }
+
+             // --- Tally Form Embed Script ---
+             // The script included in <head> usually handles initialization.
+             // Tally.loadEmbeds(); might be needed only in specific dynamic loading scenarios.
+
+        }); // End DOMContentLoaded
+    </script>
+</body>
+</html>
