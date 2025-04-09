@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSpot - One Spot for All Your Parking Solutions</title>
+    <script src="https://tally.so/widgets/embed.js" defer></script>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif; /* Make sure to link this font if using it */
+        }
+
+        body {
+            background-color: #121419;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Centered Container */
+        .container {
+            width: 90%; /* Use 90% of the available width */
+            max-width: 1200px; /* Maximum width the content will reach */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px; /* Optional small padding inside container */
+            padding-right: 15px; /* Optional small padding inside container */
+        }
+
+        /* Section Styles */
+        .section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .section-alt {
+            background-color: #1A1D23;
+        }
+
+        /* Navigation */
+        .navbar {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(18, 20, 25, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: flex-end; /* Pushes links to the right */
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            margin-right: auto; /* Pushes contact button away */
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00E69C;
+        }
+
+        .contact-btn {
+            background: transparent;
+            border: 1px solid #00E69C;
+            color: #00E69C;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+           /* margin-left: 1rem; No longer needed with flexbox justify */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background: #00E69C;
+            color: #121419;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem; /* Adjusted top padding */
+            padding-bottom: 4rem;
+            min-height: 100vh;
+            position: relative;
+            display: flex; /* Use flex on the section itself for vertical centering if needed */
+            align-items: center; /* Vertically center content in the hero section */
+        }
+
+        .hero .container {
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+             gap: 2rem; /* Add gap between text and image */
+        }
+
+        .hero-content {
+             width: 45%; /* Adjust width as needed */
+             flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .hero-image {
+             width: 50%; /* Adjust width as needed */
+             text-align: right;
+             flex-shrink: 0; /* Prevent shrinking */
+        }
+
+         .hero-image img {
+             max-width: 100%; /* Ensure image scales */
+             height: auto;
+         }
+
+
+        .welcome-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .brand-name {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .green {
+            color: #00E69C;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #aaaaaa;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .email-form {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .email-input {
+            padding: 0.8rem 1rem;
+            border-radius: 5px 0 0 5px; /* Adjust border-radius */
+            border: none;
+            background-color: #1E2128;
+            color: #ffffff;
+            flex-grow: 1; /* Allow input to grow */
+             min-width: 150px;
+        }
+
+        .submit-btn {
+            background: #00E69C;
+            color: #121419;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 5px 5px 0; /* Adjust border-radius */
+           /* margin-left: -1px; Removed margin */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            white-space: nowrap; /* Prevent button text wrapping */
+        }
+
+        .submit-btn:hover {
+            background: #00C386;
+        }
+
+        /* Stats Section */
+        .stats {
+            text-align: left; /* Content within container aligns left */
+        }
+
+        .stats-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem; /* Increased bottom margin */
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around; /* Use space-around or space-between */
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 200px; /* Optional max-width for items */
+        }
+
+        .stat-icon {
+             margin-bottom: 1rem;
+             color: #00E69C; /* Applied color directly */
+             font-size: 2rem; /* Applied size directly */
+        }
+        .stat-icon svg path, .stat-icon svg circle {
+            stroke: #00E69C; /* Ensure SVG strokes inherit color */
+        }
+
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: baseline; /* Align number and unit */
+            white-space: nowrap;
+        }
+
+        .stat-unit {
+            color: #00E69C;
+            font-size: 2.0rem; /* Slightly smaller unit */
+            font-weight: 700;
+            margin-left: 0.3rem;
+        }
+
+        .stat-description {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* App Section */
+        .app-section .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .app-image {
+             width: 40%; /* Adjust width */
+             min-width: 250px; /* Prevent getting too small */
+             text-align: center;
+        }
+        .app-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+        .app-content {
+             width: 55%; /* Adjust width */
+             min-width: 250px; /* Prevent getting too small */
+        }
+
+        .app-heading {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-description {
+            font-size: 1rem;
+            color: #aaaaaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-stores {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .store-icon {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        /* Features Section */
+        .features {
+             padding-top: 6rem; /* Adjusted padding */
+             padding-bottom: 6rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start; /* Keep alignment */
+            margin-bottom: 4rem;
+            gap: 3rem; /* Add gap */
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+         .feature-item:last-child {
+             margin-bottom: 0;
+         }
+
+        .feature-icon {
+            width: 40%; /* Adjust width */
+            min-width: 250px;
+            text-align: center;
+         /* padding-right: 2rem; Replaced by gap */
+        }
+         .feature-icon img {
+             max-width: 100%;
+             height: auto;
+         }
+
+        .feature-content {
+            width: 55%; /* Adjust width */
+             min-width: 250px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* .feature-description - Combined with points */
+
+        .feature-points {
+            margin-bottom: 1.5rem;
+            color: #aaaaaa; /* Set base color */
+            line-height: 1.6;
+        }
+
+        .feature-points p {
+            margin-bottom: 0.75rem; /* Space out points */
+            color: #ffffff; /* Highlight points */
+        }
+         .feature-points p:last-child {
+             margin-bottom: 0;
+         }
+
+        .feature-footer {
+            color: #aaaaaa;
+            font-style: italic;
+            margin-top: 1.5rem; /* Add space before footer */
+        }
+
+        /* Achievements Section */
+        .achievements .container {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .achievement-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem; /* Keep margin */
+        }
+
+        .achievement-item {
+            background-color: #1E2128;
+            border-radius: 10px;
+            padding: 2rem;
+            width: 220px; /* Slightly wider */
+            text-align: center;
+            transition: transform 0.3s ease;
+             flex-basis: 220px; /* Ensure items don't shrink too much */
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-icon {
+             margin-bottom: 1rem;
+             max-width: 60px; /* Control icon size */
+             height: auto;
+        }
+
+        .achievement-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-date {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Team Section */
+        .team .container {
+            text-align: center;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem; /* Keep margin */
+        }
+
+        .team-member {
+             width: 200px;
+             text-align: center;
+             flex-basis: 200px;
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact .container {
+            display: flex;
+            align-items: center; /* Vertically center items */
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-image {
+             width: 45%; /* Adjust width */
+             min-width: 250px;
+             text-align: center;
+             align-self: center; /* Center vertically if container height allows */
+        }
+         .contact-image img {
+             max-width: 100%;
+             height: auto;
+         }
+
+        .contact-form {
+             width: 50%; /* Adjust width */
+             min-width: 250px;
+             /* Add some minimum height if needed, Tally might adjust */
+             min-height: 300px;
+             display: flex; /* To help center iframe if needed */
+             align-items: center; /* To help center iframe */
+        }
+
+        /* Remove old form styles */
+        /* .contact-title { ... } */
+        /* .contact-input, .contact-textarea { ... } */
+        /* .contact-submit { ... } */
+
+
+        /* Supporting Organizations */
+        .supporting-orgs .container {
+            text-align: center;
+        }
+
+        .orgs-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .org-logo {
+             height: 40px;
+             max-width: 150px; /* Prevent logos from being too wide */
+             filter: brightness(0) invert(1);
+             opacity: 0.8;
+             transition: opacity 0.3s ease;
+        }
+
+        .org-logo:hover {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #121419; /* Keep background */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            text-align: center;
+            color: #aaaaaa;
+            font-size: 0.9rem; /* Added font size */
+        }
+         /* Assuming footer content is simple text inside the container */
+        .footer .container {
+            text-align: center;
+        }
+
+
+        /* Animations (No changes needed) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none; /* Hidden by default */
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ffffff;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+
+        /* --- Responsive Design --- */
+
+        @media (max-width: 1024px) {
+            .container {
+                width: 95%; /* Use slightly more width */
+            }
+            .hero .container {
+                 flex-direction: column;
+                 text-align: center;
+             }
+             .hero-content, .hero-image {
+                 width: 100%; /* Take full width in column */
+                 max-width: 500px; /* Optional max-width for content */
+                 text-align: center; /* Center text */
+             }
+             .hero-image {
+                 margin-top: 3rem;
+                 text-align: center; /* Ensure image is centered */
+             }
+             .email-form {
+                 justify-content: center; /* Center email form */
+             }
+
+            .app-section .container,
+            .contact .container {
+                 flex-direction: column;
+                 text-align: center;
+            }
+            .app-image, .app-content, .contact-image, .contact-form {
+                 width: 100%;
+                 max-width: 500px; /* Constrain width */
+            }
+             .app-image, .contact-image {
+                 margin-bottom: 2rem; /* Add space below image when stacked */
+             }
+             .app-stores {
+                 justify-content: center; /* Center store icons */
+             }
+
+             .feature-item {
+                 flex-direction: column;
+                 align-items: center;
+                 text-align: center;
+                 gap: 2rem; /* Adjust gap */
+             }
+             .feature-icon, .feature-content {
+                 width: 100%;
+                 max-width: 500px; /* Constrain width */
+             }
+             .feature-icon {
+                 margin-bottom: 0; /* Removed bottom margin, use gap */
+             }
+        }
+
+        @media (max-width: 768px) {
+            .brand-name { font-size: 3.5rem; }
+            .tagline { font-size: 1.3rem; }
+            .stats-grid, .achievement-grid, .team-grid {
+                justify-content: center; /* Ensure centering */
+            }
+             .stat-item, .achievement-item, .team-member {
+                 flex-basis: 45%; /* Allow two items per row */
+                 max-width: 200px; /* Adjust max-width if needed */
+             }
+
+             .orgs-grid { gap: 2rem; }
+
+             /* Mobile Menu Activation */
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+                order: 3; /* Place it after the contact button */
+                 margin-left: 1rem; /* Space it from contact button */
+            }
+            .navbar .container {
+                 /* Allow menu toggle to influence layout */
+            }
+            .nav-links {
+                display: none; /* Hide nav links by default */
+                position: absolute;
+                top: 100%; /* Position below navbar */
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: rgba(18, 20, 25, 0.98); /* Slightly less transparent */
+                padding: 1rem 0;
+                align-items: center;
+                gap: 1.5rem; /* Adjust gap for vertical layout */
+                border-top: 1px solid #333; /* Optional separator */
+            }
+            .nav-links.active {
+                display: flex; /* Show when active */
+            }
+             .nav-links a {
+                 font-size: 1.1rem; /* Slightly larger for touch */
+             }
+             /* Adjust contact button position if needed when menu is open */
+             .contact-btn {
+                 order: 2; /* Keep contact button before toggle */
+             }
+        }
+
+
+        @media (max-width: 480px) {
+            .container {
+                width: 98%; /* Almost full width */
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .brand-name { font-size: 2.8rem; }
+            .tagline { font-size: 1.1rem; }
+
+            .email-form {
+                 flex-direction: column;
+                 align-items: stretch; /* Stretch items to full width */
+                 gap: 1rem;
+            }
+            .email-input, .submit-btn {
+                 width: 100%; /* Full width */
+                 border-radius: 5px; /* Reset border radius for stacked items */
+            }
+
+            .stat-number { font-size: 2rem; }
+            .stat-unit { font-size: 1.5rem; }
+             .stat-item, .achievement-item, .team-member {
+                 flex-basis: 80%; /* Mostly one item per row */
+                 max-width: none;
+             }
+
+             /* --- Hide Elements on Phone --- */
+             .contact-btn {
+                 display: none; /* Hide Contact Us button */
+             }
+             .hero-image {
+                 display: none; /* Hide hero image */
+             }
+             .hero-content {
+                  width: 100%; /* Ensure text takes full width when image is hidden */
+                  max-width: none;
+             }
+             /* Adjust navbar when contact button is hidden */
+             .navbar .container {
+                  justify-content: space-between; /* Space out links and toggle */
+             }
+             .nav-links {
+                  margin-right: 0; /* Remove margin when contact button is gone */
+             }
+             .menu-toggle {
+                  margin-left: 0; /* Remove margin when contact button is gone */
+             }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#product">Product</a>
+                <a href="#features">Feature</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+            </div>
+            <a href="#contact" class="contact-btn">Contact Us</a>
+            <button class="menu-toggle">☰</button> </div>
+    </nav>
+
+    <section id="home" class="hero section">
+        <div class="container">
+            <div class="hero-content animated">
+                <p class="welcome-text">Welcome to</p>
+                <h1 class="brand-name">Green<span class="green">Spot</span></h1>
+                <p class="tagline">One Spot for All Your Parking Solutions</p>
+                <p class="description">Your go-to mobile app designed to revolutionize parking. Whether you're finding a spot or sharing one, we've got you covered while helping reduce your carbon footprint.</p>
+                <div class="email-form">
+                    <input type="email" class="email-input" placeholder="Your Email">
+                    <button class="submit-btn">Stay Updated</button>
+                </div>
+            </div>
+            <div class="hero-image animated delay-1">
+                <img src="car_map.svg" alt="Parking Map with Car"> </div>
+        </div>
+    </section>
+
+    <section id="product" class="stats section section-alt">
+       <div class="container">
+            <h2 class="stats-title animated">Here is what we are trying to save...</h2>
+            <div class="stats-grid">
+                <div class="stat-item animated delay-1">
+                    <div class="stat-icon"> <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                           <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                           <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
+                       </svg>
+                    </div>
+                    <div class="stat-number">41<span class="stat-unit">hrs</span></div>
+                    <p class="stat-description">A Driver Wastes Every Year</p>
+                </div>
+                <div class="stat-item animated delay-2">
+                     <div class="stat-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" stroke-width="2"/>
+                           <path d="M10 17h4" stroke-width="2" stroke-linecap="round"/>
+                           <path d="M9 10h6" stroke-width="2" stroke-linecap="round"/>
+                           <path d="M9 7h6" stroke-width="2" stroke-linecap="round"/>
+                       </svg>
+                     </div>
+                    <div class="stat-number">3.2<span class="stat-unit">B</span></div>
+                    <p class="stat-description">Liters of fuel use Every Year</p>
+                </div>
+                <div class="stat-item animated delay-3">
+                     <div class="stat-icon">
+                       <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M12 1v22" stroke-width="2" stroke-linecap="round"/>
+                           <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2" stroke-linecap="round"/>
+                       </svg>
+                     </div>
+                    <div class="stat-number">€40<span class="stat-unit">B</span></div>
+                    <p class="stat-description">Hit on Economy Every Year</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section section">
+        <div class="container">
+            <div class="app-image animated">
+                <img src="mockup.png" alt="App Mockup"> </div>
+            <div class="app-content animated delay-1">
+                <h2 class="app-heading">Soon Available to Install...</h2>
+                <div class="app-stores">
+                    <img src="store.png" alt="App Store" class="store-icon">
+                    <img src="g_store.png" alt="Google Play" class="store-icon">
+                </div>
+                <p class="app-description">Redefining Urban Parking with Sustainability and Convenience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features section section-alt">
+        <div class="container">
+            <div class="feature-item">
+                <div class="feature-icon animated">
+                    <img src="car_search.png" alt="Find Parking Feature">
+                </div>
+                <div class="feature-content animated delay-1">
+                    <h3 class="feature-title">Find Parking in Real Time</h3>
+                    <div class="feature-points">
+                        <p>Live Availability: Instantly see open spots near you.</p>
+                        <p>Transparent Pricing: Know the cost before you park.</p>
+                        <p>Easy Payment: Reserve and pay in-app—no hassle.</p>
+                    </div>
+                    <p class="feature-footer">Find, compare, and secure your spot effortlessly!</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content animated delay-1">
+                    <h3 class="feature-title">Turn Your Empty Spot into Earnings</h3>
+                    <div class="feature-points">
+                        <p>Earn Effortlessly: Rent out your unused parking space.</p>
+                        <p>Flexible Scheduling: Set availability with ease.</p>
+                        <p>Reduce Traffic: Help drivers find parking faster.</p>
+                    </div>
+                    <p class="feature-footer">Monetize your space while making parking easier for everyone!</p>
+                </div>
+                 <div class="feature-icon animated">
+                    <img src="https://via.placeholder.com/500x350/1A1D23/00E69C?text=Earning+Viz" alt="Illustration showing earning potential from parking spot" onerror="this.onerror=null; this.src='https://placehold.co/500x350/1A1D23/444?text=Image+Not+Found';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="achievements section">
+        <div class="container">
+            <h2 class="section-title animated">Our Achievement</h2>
+            <div class="achievement-grid">
+                <div class="achievement-item animated delay-1">
+                    <img src="icon1.png" alt="Startup Award" class="achievement-icon">
+                    <h3 class="achievement-title">2nd Prize</h3>
+                    <p class="achievement-date">Won in June 2024</p>
+                </div>
+                <div class="achievement-item animated delay-1">
+                    <img src="icon2.png" alt="Funding" class="achievement-icon">
+                    <h3 class="achievement-title">Funded</h3>
+                    <p class="achievement-date">In Dec 2024</p>
+                </div>
+                <div class="achievement-item animated delay-2">
+                    <img src="icon3.png" alt="Enactus" class="achievement-icon">
+                    <h3 class="achievement-title">Gating</h3>
+                    <p class="achievement-date">Finalist in Jan 2025</p>
+                </div>
+                <div class="achievement-item animated delay-2">
+                    <img src="icon4.png" alt="First Prize" class="achievement-icon">
+                    <h3 class="achievement-title">1st Prize</h3>
+                    <p class="achievement-date">Won in Jan 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team section section-alt">
+        <div class="container">
+            <h2 class="section-title animated">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member animated delay-1">
+                    <img src="profile_1.png" alt="Ankit Thakkur" class="member-image">
+                    <h3 class="member-name">Ankit Thakkur</h3>
+                    <p class="member-role">CEO & Founder</p>
+                </div>
+                <div class="team-member animated delay-1">
+                    <img src="profile_2.png" alt="Anand Krishnan" class="member-image">
+                    <h3 class="member-name">Anand Krishnan</h3>
+                    <p class="member-role">Co Founder & CTO</p>
+                </div>
+                <div class="team-member animated delay-2">
+                    <img src="profile_3.png" alt="Juan Rosero" class="member-image">
+                    <h3 class="member-name">Juan Rosero</h3>
+                    <p class="member-role">Co Founder & CFO</p>
+                </div>
+                 <div class="team-member animated delay-2">
+                    <img src="profile_4.png" alt="Esha Anees" class="member-image">
+                    <h3 class="member-name">Esha Anees</h3>
+                    <p class="member-role">Co Founder & UX/UI Designer</p>
+                </div>
+                <div class="team-member animated delay-3">
+                    <img src="profile_5.png" alt="Ameesha Bhorkade" class="member-image">
+                    <h3 class="member-name">Ameesha Bhorkade</h3>
+                    <p class="member-role">Visual Designer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="contact-image animated">
+                 <h2 class="contact-title" style="margin-bottom: 2rem; font-size: 2rem;">Want to know more about us?</h2> <img src="work_us.png" alt="Work With Us">
+            </div>
+            <div class="contact-form animated delay-1">
+                 <iframe
+                   data-tally-src="https://tally.so/embed/wal9gq?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                   loading="lazy"
+                   width="100%"
+                   height="273" /* Initial height, dynamicHeight will adjust */
+                   frameborder="0"
+                   marginheight="0"
+                   marginwidth="0"
+                   title="Contact form">
+                 </iframe>
+                 </div>
+        </div>
+    </section>
+
+    <section class="supporting-orgs section section-alt">
+        <div class="container">
+            <h2 class="section-title animated">Supporting Organizations</h2>
+            <div class="orgs-grid">
+                <img src="enactus.png" alt="Enactus" class="org-logo animated delay-1">
+                <img src="coe_icon.png" alt="Center of Entrepreneurship" class="org-logo animated delay-2">
+                <img src="newexist.png" alt="Newexist" class="org-logo animated delay-3">
+            </div>
+        </div>
+    </section>
+
+     <footer class="footer">
+        <div class="container">
+             <p>&copy; 2025 GreenSpot. All rights reserved.</p> </div>
+     </footer>
+
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target); // Optional: Stop observing once animated
+                    }
+                });
+            }, { threshold: 0.1 }); // Trigger when 10% visible
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    const navLinks = document.querySelector('.nav-links'); // Mobile nav
+
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu if open and clicked link is not the toggle
+                        if (navLinks.classList.contains('active')) {
+                             navLinks.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+             // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+             // NOTE: Tally.loadEmbeds(); is usually NOT needed here
+             // if the script is included in the <head> as it handles loading automatically.
+
+        }); // End DOMContentLoaded
+
+
+    </script>
+</body>
+</html>
