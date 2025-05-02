@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenSpot - One Spot for All Your Parking Solutions</title>
     <script src="https://tally.so/widgets/embed.js" defer></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         /* CSS Reset and Base Styles */
         * {
@@ -383,9 +384,12 @@
         }
 
         .achievement-icon {
-             margin-bottom: 1rem;
-             max-width: 60px; /* Control icon size */
-             height: auto;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .achievement-title {
@@ -506,6 +510,24 @@
          /* Assuming footer content is simple text inside the container */
         .footer .container {
             text-align: center;
+        }
+        .footer-social {
+            margin: 1rem 0;
+        }
+        .footer-icon {
+            width: 28px;
+            height: 28px;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .footer-icon:hover {
+            opacity: 1;
+        }
+        .footer-email {
+            color: #00E69C;
+            text-decoration: underline;
         }
 
 
@@ -806,27 +828,27 @@
 
     <section id="about" class="achievements section">
         <div class="container">
-            <h2 class="section-title animated">Our Achievement</h2>
+            <h2 class="section-title animated">Press & Awards</h2>
             <div class="achievement-grid">
                 <div class="achievement-item animated delay-1">
                     <img src="icon1.png" alt="Startup-night Award" class="achievement-icon">
                     <h3 class="achievement-title">2nd Prize</h3>
-                    <p class="achievement-date">Won in June 2024</p>
+                    <p class="achievement-date">2024</p>
                 </div>
                 <div class="achievement-item animated delay-1">
                     <img src="icon2.png" alt="Kickstarter Funding" class="achievement-icon">
                     <h3 class="achievement-title">Funded</h3>
-                    <p class="achievement-date">In Dec 2024</p>
+                    <p class="achievement-date">2024</p>
                 </div>
                 <div class="achievement-item animated delay-2">
                     <img src="icon4.png" alt="Enactus" class="achievement-icon">
                     <h3 class="achievement-title">Gating</h3>
-                    <p class="achievement-date">Completed in Jan 2025</p>
+                    <p class="achievement-date">2025</p>
                 </div>
                 <div class="achievement-item animated delay-2">
                     <img src="icon3.png" alt="First Prize" class="achievement-icon">
                     <h3 class="achievement-title">1st Prize</h3>
-                    <p class="achievement-date">Won in Jan 2025</p>
+                    <p class="achievement-date">2025</p>
                 </div>
             </div>
         </div>
@@ -837,29 +859,39 @@
             <h2 class="section-title animated">Our Team</h2>
             <div class="team-grid">
                 <div class="team-member animated delay-1">
-                    <img src="profile_1.png" alt="Ankit Thakkur" class="member-image">
-                    <h3 class="member-name">Ankit Thakkur</h3>
-                    <p class="member-role">CEO & Founder</p>
+                    <a href="https://www.linkedin.com/in/ankit-thakur-co/" target="_blank" rel="noopener">
+                        <img src="profile_1.png" alt="Ankit Thakkur" class="member-image">
+                    </a>
+                    <h3 class="member-name">Ankit Thakur</h3>
+                    <p class="member-role">Founder & CEO</p>
                 </div>
                 <div class="team-member animated delay-1">
-                    <img src="profile_2.png" alt="Anand Krishnan" class="member-image">
+                    <a href="https://www.linkedin.com/in/anand-krishnan-a60629179/" target="_blank" rel="noopener">
+                        <img src="profile_2.png" alt="Anand Krishnan" class="member-image">
+                    </a>
                     <h3 class="member-name">Anand Krishnan</h3>
                     <p class="member-role">Co Founder & CTO</p>
                 </div>
                 <div class="team-member animated delay-2">
-                    <img src="profile_3.png" alt="Juan Rosero" class="member-image">
+                    <a href="https://www.linkedin.com/in/jroserovbs/" target="_blank" rel="noopener">
+                        <img src="profile_3.png" alt="Juan Rosero" class="member-image">
+                    </a>
                     <h3 class="member-name">Juan Rosero</h3>
                     <p class="member-role">Co Founder & CFO</p>
                 </div>
-                 <div class="team-member animated delay-2">
-                    <img src="profile_4.png" alt="Esha Anees" class="member-image">
+                <div class="team-member animated delay-3">
+                    <a href="https://www.linkedin.com/in/ameesha-bhorkade-948581192/" target="_blank" rel="noopener">
+                        <img src="profile_5.png" alt="Ameesha Bhorkade" class="member-image">
+                    </a>
+                    <h3 class="member-name">Ameesha Bhorkade</h3>
+                    <p class="member-role">Co Founder & Lead Designer</p>
+                </div>
+                <div class="team-member animated delay-2">
+                    <a href="https://www.linkedin.com/in/esha-anees" target="_blank" rel="noopener">
+                        <img src="profile_4.png" alt="Esha Anees" class="member-image">
+                    </a>
                     <h3 class="member-name">Esha Anees</h3>
                     <p class="member-role">Co Founder & UX/UI Designer</p>
-                </div>
-                <div class="team-member animated delay-3">
-                    <img src="profile_5.png" alt="Ameesha Bhorkade" class="member-image">
-                    <h3 class="member-name">Ameesha Bhorkade</h3>
-                    <p class="member-role">Visual Designer</p>
                 </div>
             </div>
         </div>
@@ -897,10 +929,26 @@
         </div>
     </section>
 
-     <footer class="footer">
+    <footer class="footer">
         <div class="container">
-             <p>&copy; 2025 GreenSpot. All rights reserved.</p> </div>
-     </footer>
+            <p>
+                <a href="mailto:info@park-greenspot.com" class="footer-email">info@park-greenspot.com</a>
+                &nbsp;|&nbsp; Park Smarter, Save Time
+            </p>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/ankit-thakur-co/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <img src="linkedin.svg" alt="LinkedIn" class="footer-icon">
+                </a>
+                <a href="https://www.instagram.com/green.spot.de/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <img src="instagram.svg" alt="Instagram" class="footer-icon">
+                </a>
+                <a href="mailto:info@park-greenspot.com" aria-label="Email">
+                    <img src="gmail.svg" alt="E-mail" class="footer-icon">
+                </a>
+            </div>
+            <p>&copy; 2025 GreenSpot. All rights reserved.</p>
+        </div>
+    </footer>
 
 
     <script>
